@@ -10,6 +10,6 @@ describe ReverseMarkdown do
   it { is_expected.to start_with "First content\n\nSecond content\n\n" }
   it { is_expected.to include "\n\n_Complex_\n\n    Content" }
   it { is_expected.to include "**Trailing whitespace:**" }
-  it { is_expected.to include "**Trailing non-breaking space:&nbsp;**" }
-  it { is_expected.to include "**_Combination:&nbsp;_**" }
+  it { is_expected.to include "**Trailing non-breaking space: **" }
+  it { is_expected.to include "**_Combination: _**" }
 end

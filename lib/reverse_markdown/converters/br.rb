@@ -2,7 +2,11 @@ module ReverseMarkdown
   module Converters
     class Br < Base
       def convert(node, state = {})
-        "  \n"
+        if ReverseMarkdown.config.slack_flavored
+          ""
+        else
+          "  \n"
+        end
       end
     end
 

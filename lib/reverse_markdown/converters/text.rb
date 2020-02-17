@@ -28,6 +28,7 @@ module ReverseMarkdown
         text = remove_border_newlines(text)
         text = remove_inner_newlines(text)
         text = escape_keychars(text)
+        text = Nokogiri::HTML.parse(text).text
 
         text = preserve_keychars_within_backticks(text)
         text = preserve_tags(text)
