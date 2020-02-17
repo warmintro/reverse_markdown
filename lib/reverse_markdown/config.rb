@@ -1,10 +1,11 @@
 module ReverseMarkdown
   class Config
-    attr_writer :unknown_tags, :github_flavored, :tag_border, :force_encoding
+    attr_writer :unknown_tags, :github_flavored, :github_flavored, :tag_border, :force_encoding
 
     def initialize
       @unknown_tags     = :pass_through
       @github_flavored  = false
+      @slack_flavored  = false
       @force_encoding   = false
       @em_delimiter     = '_'.freeze
       @strong_delimiter = '**'.freeze
@@ -21,6 +22,10 @@ module ReverseMarkdown
 
     def unknown_tags
       @inline_options[:unknown_tags] || @unknown_tags
+    end
+
+    def slack_flavored
+      @inline_options[:slack_flavored] || @slack_flavored
     end
 
     def github_flavored

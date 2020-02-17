@@ -8,6 +8,10 @@ module ReverseMarkdown
 
         if href.to_s.empty? || name.empty?
           name
+        elsif ReverseMarkdown.config.slack_flavored
+          link = "<#{href}#{title}|#{name}>"
+          link.prepend(' ') if prepend_space?(node)
+          link
         else
           link = "[#{name}](#{href}#{title})"
           link.prepend(' ') if prepend_space?(node)

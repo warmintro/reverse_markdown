@@ -17,6 +17,12 @@ describe ReverseMarkdown do
   it { is_expected.to include 'after an ! [there](http://not.an.image.foobar.com) should be an extra space.'}
   it { is_expected.to include 'with stripped elements inbetween: ! [there](http://still.not.an.image.foobar.com) should be an extra space.'}
 
+  context "with github style code blocks" do
+    subject { ReverseMarkdown.convert(input, slack_flavored: true) }
+    it { is_expected.to include '<http://foobar.com|Foobar>' }
+    it { is_expected.to include 'after an ! <http://not.an.image.foobar.com|there> should be an extra space.'}
+  end
+
   context "links to ignore" do
     it { is_expected.to include ' ignore anchor tags with no link text ' }
     it { is_expected.to include ' not ignore [![An Image](image.png)](foo.html) anchor tags with images' }
